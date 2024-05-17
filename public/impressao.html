@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressão do Registro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header, footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        main {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .registro {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .nome, .data-hora, .acao {
+            margin-bottom: 10px;
+        }
+        .nome label, .data-hora label, .acao label {
+            font-weight: bold;
+        }
+        .nome span, .data-hora span, .acao span {
+            font-weight: normal;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Impressão do Registro</h1>
+    </header>
+    <main>
+        <div class="registro">
+            <div class="nome">
+                <label>Nome: </label>
+                <span id="nome"></span>
+            </div>
+            <div class="data-hora">
+                <label>Data e Hora: </label>
+                <span id="dataHora"></span>
+            </div>
+            <div class="acao">
+                <label>Ação: </label>
+                <span id="acao"></span>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Academia MarombaFit</p>
+    </footer>
+
+    <script>
+        // Função para obter parâmetros da URL
+        function obterParametroDaUrl(nome) {
+            nome = nome.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + nome + '=([^&#]*)');
+            var resultados = regex.exec(location.search);
+            return resultados === null ? '' : decodeURIComponent(resultados[1].replace(/\+/g, ' '));
+        }
+
+        // Obter parâmetros da URL
+        var nome = obterParametroDaUrl('nome');
+        var dataHora = obterParametroDaUrl('dataHora');
+        var acao = obterParametroDaUrl('acao');
+
+        // Atualizar elementos HTML com os valores obtidos
+        document.getElementById('nome').textContent = nome;
+        document.getElementById('dataHora').textContent = dataHora;
+        document.getElementById('acao').textContent = acao;
+    </script>
+</body>
+</html>
