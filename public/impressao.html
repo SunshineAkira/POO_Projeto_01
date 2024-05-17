@@ -83,7 +83,6 @@
     </footer>
 
     <script>
-        // Função para obter parâmetros da URL
         function obterParametroDaUrl(nome) {
             nome = nome.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + nome + '=([^&#]*)');
@@ -91,19 +90,16 @@
             return resultados === null ? '' : decodeURIComponent(resultados[1].replace(/\+/g, ' '));
         }
 
-        // Obter parâmetros da URL
         var nome = obterParametroDaUrl('nome');
         var dataHora = obterParametroDaUrl('dataHora');
         var acao = obterParametroDaUrl('acao');
 
-        // Atualizar elementos HTML com os valores obtidos
         document.getElementById('nome').textContent = nome;
         document.getElementById('dataHora').textContent = dataHora;
         document.getElementById('acao').textContent = acao;
 
-        // Função para voltar para a página index.html
         function voltarParaIndex() {
-            window.location.href = 'index.html'; // Redireciona para a página index.html
+            window.location.href = 'index.html';
         }
     </script>
 </body>
