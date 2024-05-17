@@ -96,39 +96,35 @@
     <footer>
         <p>&copy; 2024 Academia MarombaFit</p>
         <script>
-            // Verifica se a página atual é impressao.html
+            
             if (window.location.href.endsWith('impressao.html')) {
                 document.write('<button class="btn-voltar" onclick="voltarParaIndex()">Voltar</button>');
             }
 
-            // Função para voltar para a página index.html
             function voltarParaIndex() {
-                window.location.href = 'index.html'; // Redireciona para a página index.html
+                window.location.href = 'index.html';
             }
         </script>
     </footer>
     <script>
         document.getElementById('entradaSaidaForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Evita o envio do formulário por padrão
+            event.preventDefault(); 
 
-            // Captura os valores dos campos do formulário
             var nome = document.getElementById('nome').value;
             var entrada = document.getElementById('entrada').checked;
             var saida = document.getElementById('saida').checked;
 
-            // Verifica se pelo menos uma opção foi selecionada
+
             if (!entrada && !saida) {
                 document.getElementById('mensagem').innerHTML = '<p class="error-message">Por favor, selecione Entrada e/ou Saída.</p>';
                 return;
             }
 
-            // Verifica se o campo de nome está preenchido
             if (nome.trim() === '') {
                 document.getElementById('mensagem').innerHTML = '<p class="error-message">Por favor, preencha o campo Nome.</p>';
                 return;
             }
 
-            // Obter a data e hora atuais do sistema
             var now = new Date();
             var dia = now.getDate().toString().padStart(2, '0');
             var mes = (now.getMonth() + 1).toString().padStart(2, '0'); // +1 porque os meses são zero indexados
@@ -137,10 +133,8 @@
             var minutos = now.getMinutes().toString().padStart(2, '0');
             var segundos = now.getSeconds().toString().padStart(2, '0');
 
-            // Cria a data e hora no formato DD/MM/AAAA HH:MM:SS
             var dataHora = dia + '/' + mes + '/' + ano + ' - ' + hora + ':' + minutos + ':' + segundos;
-
-            // Redireciona para a página de impressão com os parâmetros na URL
+            
             window.location.href = `impressao.html?nome=${encodeURIComponent(nome)}&dataHora=${encodeURIComponent(dataHora)}&acao=${entrada ? 'Entrada' : (saida ? 'Saída' : '')}`;
         });
     </script>
